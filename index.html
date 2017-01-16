@@ -7,15 +7,21 @@
   <title>Weather</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   <link rel="stylesheet" href="style.css" type="text/css">
+
 
 </head>
 <body>
+  <div class="headingTop">Weather</div>
+  <div class="unitBtn btn-group">
+    <button class="btn btn-default">&deg;C</button>
+    <button class="btn btn-default">&deg;F</button>
+  </div>
 <div class="weatherBox">
-  <div class="heading">Weather</div>
   <div class="location">
-    <div id="city">Bangalore</div>
-    <div id="country">,IN</div>
+    <div id="city">San Francisco</div>
+    <div id="country">,US</div>
   </div>
   <div id="temp">
     <div id="tempValue">36</div>
@@ -23,7 +29,7 @@
   </div>
   <div id="weatherDesc">Clear Sky</div>
 </div>
-<div class="footer">Developed By Anupam Majhi</div>
+<div class="footer">Developed By <a href="anupamm.com">Anupam Majhi</a></div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -35,7 +35,7 @@ function getWeather(type){
   $("#tempValue").html("Loading");
   $("#tempUnit").html("");
   $("#weatherDesc").html("- - - - - -")
-
+  
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(position){
       var lati = position.coords.latitude

@@ -1,7 +1,6 @@
 body {
     font-family: 'Pacifico', cursive;
-    background: url("https://raw.githubusercontent.com/anupammajhi/OpenWeatherMapBGImages/master/50n.jpg") no-repeat center center fixed;
-    ;
+    background: #123456 no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -32,9 +31,14 @@ body {
     float: right;
 }
 
-.btn-unselect {
+.btn-default {
     background-color: transparent;
     color: white;
+}
+
+.btn-select {
+    background-color: white;
+    color: #333;
 }
 
 .location {}

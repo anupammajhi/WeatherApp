@@ -18,35 +18,32 @@ $(".unitBtn button").on("click",function(){
   $(".unitBtn button").removeClass("btn-select");
   $(this).addClass("btn-select");
   if($(this).html() == "°C"){
-    getWeather("C")
+    getIP("C")
   }
   if($(this).html() == "°F"){
-    getWeather("F")
+    getIP("F")
   }
 
 });
 
 
 //Get Weather
-function getWeather(type){
+function getWeather(type,city,country){
 
   $("#city").html("- - - - - -");
   $("#country").html("- - - -");
   $("#tempValue").html("Loading");
   $("#tempUnit").html("");
   $("#weatherDesc").html("- - - - - -")
-  
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(function(position){
-      var lati = position.coords.latitude
-      var longi = position.coords.longitude
+
+  query = city + "," + country
 
       if(type == "C"){
-        var url="http://api.openweathermap.org/data/2.5/weather?type=like&lat="+lati+"&lon="+longi+"&units=metric&appid="+APPID
+        var url="http://api.openweathermap.org/data/2.5/weather?q="+query+"&units=metric&appid="+APPID
         var tempUnit = "&deg;C"
       }
       else{
-        var url="http://api.openweathermap.org/data/2.5/weather?type=like&lat="+lati+"&lon="+longi+"&units=imperial&appid="+APPID
+        var url="http://api.openweathermap.org/data/2.5/weather?q="+query+"&units=imperial&appid="+APPID
         var tempUnit = "&deg;F"
       }
 
@@ -55,8 +52,8 @@ function getWeather(type){
       })
       .done(function(data){
         console.log(data)
-        $("#city").html(data.name);
-        $("#country").html(" , "+data.sys.country);
+        $("#city").html(city);
+        $("#country").html(" , "+country);
         $("#tempValue").html(data.main.temp);
         $("#tempUnit").html(tempUnit);
         $("#weatherDesc").html(data.weather[0].main)
@@ -67,13 +64,17 @@ function getWeather(type){
         console.log("Error : "+error)
         $("#tempValue").html("Could Not Fetch");
       })
-
-    })
-  }
-  else{
-    $("#tempValue").html("Location Not Enabled");
-  }
-
 }
 
-getWeather("C");
+//Get IP
+function getIP(type){
+  var IPInfourl = "http://ipinfo.io/json"
+  $.ajax(IPInfourl,{
+    dataType:"jsonp"
+  })
+  .done(function(data){
+    getWeather(type,data.city,data.country);
+  })
+}
+
+getIP("C")

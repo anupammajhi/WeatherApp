@@ -68,7 +68,13 @@ function getWeather(type,city,country){
 
 //Get IP
 function getIP(type){
-  var IPInfourl = "http://ipinfo.io/json"
+
+  var IP = ""
+  var IPUrl = "https://api.ipify.org"
+  $.ajax(IPUrl)
+  .done(function(data){IP=data})
+
+  var IPInfourl = "http://ipinfo.io/"+IP+"/json"
   $.ajax(IPInfourl,{
     dataType:"jsonp"
   })

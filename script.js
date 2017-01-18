@@ -72,14 +72,16 @@ function getIP(type){
   var IP = ""
   var IPUrl = "https://api.ipify.org"
   $.ajax(IPUrl)
-  .done(function(data){IP=data})
-
-  var IPInfourl = "http://ipinfo.io/"+IP+"/json"
-  $.ajax(IPInfourl,{
-    dataType:"jsonp"
-  })
   .done(function(data){
-    getWeather(type,data.city,data.country);
+    IP=data
+    console.log(IP);
+      var IPInfourl = "http://ipinfo.io/"+IP+"/json"
+      $.ajax(IPInfourl,{
+        dataType:"jsonp"
+      })
+      .done(function(data){
+        getWeather(type,data.city,data.country);
+      })
   })
 }
 

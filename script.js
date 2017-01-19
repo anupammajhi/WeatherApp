@@ -56,7 +56,7 @@ function getWeather(type,city,country){
         $("#country").html(" , "+country);
         $("#tempValue").html(data.main.temp);
         $("#tempUnit").html(tempUnit);
-        $("#weatherDesc").html(data.weather[0].main)
+        $("#weatherDesc").html(data.weather[0].description)
         var icon = data.weather[0].icon
         $("body").css("background-image","url('https://raw.githubusercontent.com/anupammajhi/OpenWeatherMapBGImages/master/"+icon+".jpg')")
       })
